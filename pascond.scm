@@ -1,0 +1,6 @@
+(define (pascal lat long)
+	(cond ((= long 1)1)
+		((= lat 1)1)
+		((= lat long)1)
+		(else(+ (pascal (- lat 1)long)
+				(pascal (- lat 1)(- long 1))))))
