@@ -32,8 +32,6 @@
 
 (define (table1-put! tbl key val)
 	(set-cdr! tbl (add-assoc key val (cdr tbl)))) 
-; set-cdr! takes the box and pointer structure pointed to by tbl 
-; finds the cdr of that pair and changes it to point to the new list   
 
 (define tt1 (make-table1))
 (table1-put! tt1 'y 20)
