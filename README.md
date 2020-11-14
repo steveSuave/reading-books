@@ -4,4 +4,5 @@ Examples and exercises from books including:
 - the Structure and Interpretation of Computer Programs,
 - Foundations of Computer Science,
 - How to Design Programs.
+
 additional books pending
