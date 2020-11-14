@@ -3,8 +3,6 @@
 ;; Starting with the following data definition for a binary tree (not a binary search tree) 
 ;; design a tail-recursive function called contains? that consumes a key and a binary tree 
 ;; and produces true if the tree contains the key.
- 
-
 
 (define-struct node (k v l r))
 ;; BT is one of:
@@ -54,7 +52,3 @@
                 (fn-for-bt (first todo) (rest todo))))]
     (fn-for-bt bt empty)))
 	
-	
-	
-	
-

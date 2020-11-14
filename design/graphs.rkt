@@ -49,19 +49,3 @@
                (find-lop (rest lop) dest graph)
                theFirst))]))
 
-                        
-            
-              
-
-
-
-
-
-
-
-
-
-
-
-                                  
-           

@@ -12,3 +12,4 @@
         (append (quicksrt (filter (λ (a) (< a frst)) l))
                 (filter (λ (b) (= b frst)) l)
                 (quicksrt (filter (λ (c) (> c frst)) l))))))
+

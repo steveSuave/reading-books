@@ -1,5 +1,3 @@
-#lang racket
-
 (define incr (lambda (x) (+ x 1)))
 
 (define zero (lambda (x) (lambda (y) y)))
@@ -13,5 +11,4 @@
 (define mult (lambda (a) (lambda (b) (lambda (c) (a (b c))))))
 
 ((((mult three) three) incr) 0)
-
 
