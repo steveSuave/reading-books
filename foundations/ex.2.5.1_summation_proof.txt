@@ -18,8 +18,8 @@ basis: j = 1
 induction on i:
     Suppose we have a number j > 1 and sum(h) is true for 1<=h<=j. We' ll prove sum(j+1).
     Before the assignment (3) i=j, by the inductive hypothesis sum=j(j-1)/2, after it is
-	sum=j(j-1)/2 + j = j(j+1)/2. Thus at the beginning of next iteration sum=j(j+1)/2
-	therefore sum(j+1) is true.
+    sum=j(j-1)/2 + j = j(j+1)/2. Thus at the beginning of next iteration sum=j(j+1)/2
+    therefore sum(j+1) is true.
 
 After nth iteration the program terminates with sum = n(n+1)/2.
 Thus it correctly evaluates that the sum of i from i = 1 to i = n equals n(n+1)/2.
