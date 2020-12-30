@@ -23,3 +23,12 @@
 ;; (/ (/ (/ 1 2) 3) 1)
 ;; Value: 1/6
 
+;; ================================================================
+
+(define (reverse1 sequence)
+  (fold-right (lambda (x y) (append y (list x))) '() sequence))
+(define (reverse2 sequence)
+  (fold-left (lambda (x y) (cons y x)) '() sequence))
+
+(reverse1 '(1 2 3))
+(reverse2 '(1 2 3))
