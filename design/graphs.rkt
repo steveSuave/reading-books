@@ -1,4 +1,3 @@
-
 ;; Node is Symbol
 ;; interp. the name of a Node
 
@@ -22,7 +21,7 @@
         [(equal? node (caar graph))
          (cadar graph)]
         [else
-         (neighbors node (rest graph))]))      
+         (neighbors node (rest graph))]))
 
 ;; Node Node Graph -> listof (listof Node) | false
 ;; to find a path between two nodes in a graph
@@ -44,8 +43,7 @@
 (define (find-lop lop dest graph)
   (cond [(empty? lop) false]
         [else
-         (local [(define theFirst (find-path (first lop) dest graph))]              
+         (local [(define theFirst (find-path (first lop) dest graph))]
            (if (false? theFirst)
                (find-lop (rest lop) dest graph)
                theFirst))]))
-
