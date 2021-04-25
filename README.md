@@ -1,4 +1,4 @@
-# studying-books
+# reading-books
 Examples and exercises from books including:
 - An Introduction to Functional Programming Through Lambda Calculus,
 - Structure and Interpretation of Computer Programs,
