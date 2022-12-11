@@ -1,7 +1,7 @@
 (define nil '())
 
 ; find the value of a key in an associative list
-; returns only the first found instance of the given value 
+; returns only the first found instance of the given value
 (define (find-assoc key alist)
 	(cond
 		((null? alist) #f)
@@ -31,7 +31,7 @@
 	(find-assoc key (cdr tbl)))
 
 (define (table1-put! tbl key val)
-	(set-cdr! tbl (add-assoc key val (cdr tbl)))) 
+	(set-cdr! tbl (add-assoc key val (cdr tbl))))
 
 (define tt1 (make-table1))
 (table1-put! tt1 'y 20)
