@@ -8,26 +8,26 @@
 ;; a few helpers for lambda, begin, cond and quote to accept exp and env as parameters.
 (define (m-eval exp env)
   (cond ((self-evaluating? exp) exp)
-	((variable? exp) (lookup-variable-value exp env))
-	((special-form? exp)
-	 ((get-handler (operator exp)) exp env))
-	((application? exp)
-	 (m-apply (m-eval (operator exp) env)
-		  (list-of-values (operands exp) env)))
-	(else
-	 (error "Unknown expression type -- EVAL" exp))))
+        ((variable? exp) (lookup-variable-value exp env))
+        ((special-form? exp)
+         ((get-handler (operator exp)) exp env))
+        ((application? exp)
+         (m-apply (m-eval (operator exp) env)
+                  (list-of-values (operands exp) env)))
+        (else
+         (error "Unknown expression type -- EVAL" exp))))
 
 (define special-forms
   (list (cons 'quote  eval-quote)
-	(cons 'set!   eval-assignment)
-	(cons 'define eval-definition)
-	(cons 'if     eval-if)
-	(cons 'lambda eval-lambda)
-	(cons 'begin  eval-begin)
-	(cons 'cond   eval-cond)
-	(cons 'and    eval-and)
-	(cons 'or     eval-or)
-	))
+        (cons 'set!   eval-assignment)
+        (cons 'define eval-definition)
+        (cons 'if     eval-if)
+        (cons 'lambda eval-lambda)
+        (cons 'begin  eval-begin)
+        (cons 'cond   eval-cond)
+        (cons 'and    eval-and)
+        (cons 'or     eval-or)
+        ))
 
 (define (special-form? exp)
   (assq (car exp) special-forms))
@@ -45,7 +45,7 @@
   (m-eval (cond->if exp) env))
 
 (define (eval-quote exp env)
-  (cdr exp))
+  (cadr exp))
 
 
 ;; ----------------------------------------------------------------------------------------------
@@ -72,22 +72,22 @@
 (define (eval-and exp env)
   (define (helper clauses)
     (if (null? clauses)
-	true
-	(let ((car-val (m-eval (car clauses) env)))
-	  (cond ((and (null? (cdr clauses)) (not (false? car-val)))
-		 car-val)
-		((false? car-val) false)
-		(else (helper (cdr clauses)))))))
+        true
+        (let ((car-val (m-eval (car clauses) env)))
+          (cond ((and (null? (cdr clauses)) (not (false? car-val)))
+                 car-val)
+                ((false? car-val) false)
+                (else (helper (cdr clauses)))))))
   (helper (cdr exp)))
 
 (define (eval-or exp env)
   (define (helper clauses)
     (if (null? clauses)
-	false
-	(let ((car-val (m-eval (car clauses) env)))
-	  (if (not (false? car-val))
-	      car-val
-	      (helper (cdr clauses))))))
+        false
+        (let ((car-val (m-eval (car clauses) env)))
+          (if (not (false? car-val))
+              car-val
+              (helper (cdr clauses))))))
   (helper (cdr exp)))
 
 ;; Transform and evaluate 'and and 'or as if expressions
@@ -98,11 +98,11 @@
 (define (and->if exp)
   (define (helper clauses)
     (cond ((null? clauses) 'true)
-	  ((null? (cdr clauses)) (car clauses))
-	  (else
-	   (make-if (car clauses)
-		    (helper (cdr clauses))
-		    'false))))
+          ((null? (cdr clauses)) (car clauses))
+          (else
+           (make-if (car clauses)
+                    (helper (cdr clauses))
+                    'false))))
   (helper (cdr exp)))
 
 (define (eval-or exp env)
@@ -111,8 +111,17 @@
 (define (or->if exp)
   (define (helper clauses)
     (if (null? clauses)
-	'false
-	(make-if (car clauses)
-		 (car clauses)
-		 (helper (cdr clauses)))))
+        'false
+        (make-if (car clauses)
+                 (car clauses)
+                 (helper (cdr clauses)))))
   (helper (cdr exp)))
+
+;; ----------------------------------------------------------------------------------------------
+;; Exercise 4.14.  Eva Lu Ator and Louis Reasoner are each experimenting with the metacircular evaluator.
+;; Eva types in the definition of map, and runs some test programs that use it. They work fine.
+;; Louis, in contrast, has installed the system version of map as a primitive for the metacircular evaluator.
+;; When he tries it, things go terribly wrong. Explain why Louis's map fails even though Eva's works.
+
+;; The reason is that the system version of map expects a lambda object with a different representation than
+;; the one implemented in the meta-circular evaluator.

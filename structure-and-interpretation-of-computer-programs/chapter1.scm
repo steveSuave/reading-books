@@ -7,11 +7,11 @@
 (define (f n)
   (define (iter m a b c)
     (if (= m 0)
-	c
-	(iter (- m 1)
-	      (+ a (* 2 b) (* 3 c))
-	      a
-	      b)))
+        c
+        (iter (- m 1)
+              (+ a (* 2 b) (* 3 c))
+              a
+              b)))
   (if (< n 3)
       n
       (iter n 2 1 0)))
@@ -20,8 +20,8 @@
   (if (< x 3)
       x
       (+ (fn (- x 1))
-	 (* 2 (fn (- x 2)))
-	 (* 3 (fn (- x 3))))))
+         (* 2 (fn (- x 2)))
+         (* 3 (fn (- x 3))))))
 
 (fn 25)
 (f 25)

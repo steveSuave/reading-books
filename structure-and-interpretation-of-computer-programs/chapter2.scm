@@ -18,12 +18,12 @@
 ;; ((4 3) (2 1))
 (define (deep-reverse l)
   (cond ((null? l) '())
-	((pair? (car l))
-	 (append (deep-reverse (cdr l))
-		 (list (deep-reverse (car l)))))
-	(else
-	 (append (deep-reverse (cdr l))
-		 (list (car l))))))
+        ((pair? (car l))
+         (append (deep-reverse (cdr l))
+                 (list (deep-reverse (car l)))))
+        (else
+         (append (deep-reverse (cdr l))
+                 (list (car l))))))
 
 ;; Exercise 2.28
 ;; Write a procedure fringe that takes as argument a tree (represented as a list) and returns a list whose elements are all the leaves of the tree arranged in left-to-right order.
@@ -35,21 +35,21 @@
 ;; (1 2 3 4 1 2 3 4)
 (define (fringe l)
   (cond ((null? l) '())
-	((pair? (car l))
-	 (append (fringe (car l))
-		 (fringe (cdr l))))
-	(else
-	 (cons (car l)
-	       (fringe (cdr l))))))
+        ((pair? (car l))
+         (append (fringe (car l))
+                 (fringe (cdr l))))
+        (else
+         (cons (car l)
+               (fringe (cdr l))))))
 
 ;; Exercise 2.33
 ;; Fill in the missing expressions to complete the following definitions of some basic list-manipulation operations as accumulations:
 (define (map p sequence)
- (accumulate (lambda (x y) <??>) nil sequence))
+  (accumulate (lambda (x y) <??>) nil sequence))
 (define (append seq1 seq2)
- (accumulate cons <??> <??>))
+  (accumulate cons <??> <??>))
 (define (length sequence)
- (accumulate <??> 0 sequence))
+  (accumulate <??> 0 sequence))
 
 (define (map2 p sequence)
   (accumulate (lambda (x y) (cons (p x) y)) '() sequence))
