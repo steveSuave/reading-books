@@ -5,6 +5,7 @@ Exercises and examples from books including:
 - How to Design Programs, Matthias Felleisen, Robert Bruce Findler, et al,
 - Foundations of Computer Science, Alfred Aho & Jeffrey Ullman,
 - The C Programming Language, Kernighan & Richie,
+- Programming in Haskell, Graham Hutton,
 - Compiler Construction, Niklaus Wirth.
 
 additional books pending
