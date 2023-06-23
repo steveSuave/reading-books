@@ -4,6 +4,10 @@
 -- 1. Give another possible calculation for the result of double (double 2).
 double x = x + x
 
+-- 2. Show that sum [x] = x for any number x. (?)
+summ [] = 0
+summ (x:xs) = x + summ xs
+
 -- 3. Define a function product that produces the product of a list of
 -- numbers, and show using your definition that product [2,3,4] = 24.
 prodd [] = 1
@@ -304,3 +308,23 @@ balance :: [a] -> Tree a
 balance [x] = Leaf x
 balance xs = Node (balance firstHalf) (balance secondHalf)
              where (firstHalf, secondHalf) = splitList xs
+
+
+-- 7. Complete the following instance declarations:
+-- instance Eq a => Eq (Maybe a) where
+-- ...
+-- instance Eq a => Eq [a] where
+-- ...
+data MMaybe a = NNothing | JJust a deriving Show
+
+instance Eq a => Eq (MMaybe a) where
+  NNothing == NNothing = True
+  (JJust a) == (JJust b) = a == b
+
+-- instance Eq a => Eq [a] where
+--   [] == [] = True
+--   [x:xs] == [y:ys] = x == y && xs == ys
+
+-- The above fails with:
+-- Duplicate instance declarations:
+-- instance Eq a => Eq [a] -- Defined in ‘GHC.Classes’
